@@ -17,10 +17,40 @@ function Header() {
           setValue(newValue);
         }}
         showLabels
+        style={{height: '90px'}}
       >
-        <img src={kogucik} alt="kogucik" style={{ height: '100%', float: 'left' }} />
-        <BottomNavigationAction label="Invoices" component={Link} to="/invoices" icon={<FormatListBulletedIcon />} />
-        <BottomNavigationAction label="Add new invoice" component={Link} to="/addinvoice" icon={<PostAddIcon />} />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            background: 'lightGray',
+            width: '100%',
+            alignItems: 'center'
+          }}
+        >
+          <img
+            src={kogucik}
+            alt="kogucik"
+            style={{ height: '90%', paddingRight: '70px', paddingLeft: '50px' }}
+          />
+          <div >
+            <BottomNavigationAction
+              label="Invoices"
+              component={Link}
+              to="/invoices"
+              icon={<FormatListBulletedIcon fontSize="large"/>}
+              showLabel
+            />
+            <BottomNavigationAction
+              label="Add new invoice"
+              component={Link}
+              to="/addinvoice"
+              icon={<PostAddIcon fontSize="large" />}
+              showLabel
+            />
+          </div>
+          <div />
+        </div>
       </BottomNavigation>
     </>
   );

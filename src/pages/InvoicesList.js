@@ -80,6 +80,7 @@ const rows = [
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    marginTop: '50px'
   },
   container: {
     maxHeight: 2440,
@@ -101,7 +102,7 @@ function InvoicesList() {
   };
 
   return (
-    <Container style={{ background: 'grey' }}>
+    <Container>
       <Paper className={classes.root}>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">
