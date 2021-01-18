@@ -1,3 +1,238 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }]
+  "invoices": 
+  [
+    {
+      "id": "01",
+      "created": "10/12/2020",
+      "validUntil": "01/01/2000",
+      "recipientData": {
+        "companyName": "Teatr Chrząszczowy",
+        "city": "Szczebrzeszyn",
+        "street": "Kosmiczna 43",
+        "postcode": "82-109",
+        "nip": "3245932099",
+        "phone": "+48 563 091 765",
+        "email": "teatrchrzaszczowy@gmail.com",
+        "bankAccount": "11 1222 4453 0000 2322 9668 3324"
+      },
+      "senderData": {
+        "companyName": "CzopikBag",
+        "city": "Wrocław",
+        "street": "Owsiana 25",
+        "postcode": "12-321",
+        "nip": "1342859402",
+        "phone": "+48 444 223 789",
+        "email": "czopikbag@gmail.com",
+        "bankAccount": "14 9293 7738 0000 21233 8330 0989"
+      },
+      "items": [
+        {
+          "name": "sprzedaż tkaniny",
+          "amount": 2,
+          "unit": "m",
+          "tax": 23,
+          "price": 150
+        },
+        {
+          "name": "pobranie miary",
+          "amount": 1,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 50
+        },
+        {
+          "name": "dodatki krawieckie",
+          "amount": 5,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 25
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "created": "04/08/2020",
+      "validUntil": "01/01/2000",
+      "recipientData": {
+        "companyName": "Skep zoologiczny Zwierzyniec",
+        "city": "Zwierzyniec",
+        "street": "Czekoladowa 78",
+        "postcode": "82-109",
+        "nip": "5389205839",
+        "phone": "+48 456 433 124",
+        "email": "sklepzoologicznyzwierzyniec@gmail.com",
+        "bankAccount": "34 3235 3436 0000 4757 1484 4522"
+      },
+      "senderData": {
+        "companyName": "CzopikBag",
+        "city": "Wrocław",
+        "street": "Owsiana 25",
+        "postcode": "12-321",
+        "nip": "1342859402",
+        "phone": "+48 444 223 789",
+        "email": "czopikbag@gmail.com",
+        "bankAccount": "14 9293 7738 0000 21233 8330 0989"
+      },
+      "items": [
+        {
+          "name": "sprzedaż tkaniny",
+          "amount": 10,
+          "unit": "m",
+          "tax": 23,
+          "price": 500
+        },
+        {
+          "name": "teśma nośna",
+          "amount": 100,
+          "unit": "m",
+          "tax": 23,
+          "price": 300
+        },
+        {
+          "name": "psi kubrak",
+          "amount": 10,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 600
+        },
+        {
+          "name": "skarpetki dla psa",
+          "amount": 40,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 200
+        },
+        {
+          "name": "szycie obroży",
+          "amount": 20,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 200
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "created": "10/04/2020",
+      "validUntil": "01/01/2000",
+      "recipientData": {
+        "companyName": "Sklep z kostiumami Matrix",
+        "city": "Boży Dar",
+        "street": "Orzeszkowa 236",
+        "postcode": "55-234",
+        "nip": "0396748243",
+        "phone": "+48 549 255 235",
+        "email": "sklepzkostiumamimatrix@gmail.com",
+        "bankAccount": "10 2335 5321 0000 7668 5868 5532"
+      },
+      "senderData": {
+        "companyName": "CzopikBag",
+        "city": "Wrocław",
+        "street": "Owsiana 25",
+        "postcode": "12-321",
+        "nip": "1342859402",
+        "phone": "+48 444 223 789",
+        "email": "czopikbag@gmail.com",
+        "bankAccount": "14 9293 7738 0000 21233 8330 0989"
+      },
+      "items": [
+        {
+          "name": "sprzedaż tkaniny- velur",
+          "amount": 50,
+          "unit": "m",
+          "tax": 23,
+          "price": 500
+        }        
+      ]
+    },
+    {
+      "id": "04",
+      "created": "18/01/2020",
+      "validUntil": "01/01/2000",
+      "recipientData": {
+        "companyName": "Zrywka- woreczki materiałowe na artykuły spożywcze",
+        "city": "Brody",
+        "street": "Królicz 355",
+        "postcode": "43-646",
+        "nip": "7392029482",
+        "phone": "+48 554 456 876",
+        "email": "zrywka@gmail.com",
+        "bankAccount": "11 3456 3346 0000 9743 4672 3324"
+      },
+      "senderData": {
+        "companyName": "CzopikBag",
+        "city": "Wrocław",
+        "street": "Owsiana 25",
+        "postcode": "12-321",
+        "nip": "1342859402",
+        "phone": "+48 444 223 789",
+        "email": "czopikbag@gmail.com",
+        "bankAccount": "14 9293 7738 0000 21233 8330 0989"
+      },
+      "items": [
+        {
+          "name": "sprzedaż tkaniny",
+          "amount": 15,
+          "unit": "m",
+          "tax": 23,
+          "price": 342
+        },
+        {
+          "name": "sznurek",
+          "amount": 10,
+          "unit": "m",
+          "tax": 23,
+          "price": 245
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "created": "09/09/2020",
+      "validUntil": "01/01/2000",
+      "recipientData": {
+        "companyName": "Tapicer",
+        "city": "Zamość",
+        "street": "Szklana 36",
+        "postcode": "22-400",
+        "nip": "4529847389",
+        "phone": "+48 354 325 353",
+        "email": "tapicer@gmail.com",
+        "bankAccount": "11 2638 4236 0000 4789 6652 3350"
+      },
+      "senderData": {
+        "companyName": "CzopikBag",
+        "city": "Wrocław",
+        "street": "Owsiana 25",
+        "postcode": "12-321",
+        "nip": "1342859402",
+        "phone": "+48 444 223 789",
+        "email": "czopikbag@gmail.com",
+        "bankAccount": "14 9293 7738 0000 21233 8330 0989"
+      },
+      "items": [
+        {
+          "name": "sprzedaż tkaniny",
+          "amount": 10,
+          "unit": "m",
+          "tax": 23,
+          "price": 500
+        },
+        {
+          "name": "pianka tapicerska",
+          "amount": 5,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 250
+        },
+        {
+          "name": "dodatki krawieckie",
+          "amount": 5,
+          "unit": "sztuk",
+          "tax": 23,
+          "price": 135
+        }
+      ]
+    }
+  ]
 }

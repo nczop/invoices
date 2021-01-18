@@ -8,7 +8,7 @@ import kogucik from '../kogucik.png';
 
 function Header() {
   const [value, setValue] = useState(0);
-
+  
   return (
     <>
       <BottomNavigation
@@ -46,6 +46,12 @@ function Header() {
               component={Link}
               to="/addinvoice"
               icon={<PostAddIcon fontSize="large" />}
+              showLabel
+            />
+            <BottomNavigationAction
+              label="test"
+              component={Link}
+              to="/test"
               showLabel
             />
           </div>

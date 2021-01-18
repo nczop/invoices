@@ -26,18 +26,21 @@ const useStyles = makeStyles(() => ({
     width: '87%',
   },
 }));
-function Information() {
+function Information(props) {
   const classes = useStyles();
+
   return (
     <div className={classes.informationContainer}>
       <div className={classes.column1}>
         <form noValidate autoComplete="off">
           <Box m={2}>
-            <TextField id="standard-basic" label="No." className={classes.input} />
+            <TextField id="standard-disabled" label="No." className={classes.input} defaultValue={props.invoice.id} InputProps={{
+            readOnly: props.isReadOnly,
+          }}/>
           </Box>
         </form>
         <Box m={2} component="span">
-          <DatePicker />
+          <DatePicker/>
         </Box>
         <Box m={2} component="span">
           <DatePicker />

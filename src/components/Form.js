@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import FormHeader from "./FormHeader";
 
-function Form(props) {
+function Form(props) {  
   return (
-    <>
+    <>    
       <div>
         <FormHeader header={props.header} />
-        <div>
-          <TextField label="Company name" fullWidth />
+        <div>      
+          {/* <div>{props.invoice.recipientData.companyName}</div> */}
+          <TextField label="Company name" fullWidth defaultValue={props.invoice.recipientData["companyName"]}/>
           <TextField label="City" fullWidth />
           <TextField label="Street" fullWidth />
           <TextField label="Post Code" fullWidth />
