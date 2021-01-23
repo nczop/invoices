@@ -7,7 +7,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-function DatePicker() {
+function DatePicker(props) {
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
   const handleDateChange = (date) => {
@@ -22,7 +22,7 @@ function DatePicker() {
         format="MM/dd/yyyy"
         margin="normal"
         id="date-picker-inline"
-        label="Date picker inline"
+        label={props.label}
         value={selectedDate}
         onChange={handleDateChange}
         KeyboardButtonProps={{

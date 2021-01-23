@@ -16,7 +16,7 @@ function App() {
         <Link to="/addinvoice" />
         <Link to="/" />
         <Link to="/test" />
-        <Link to="/invoice/:id"/>
+        <Link to="/invoice/:id" />
         <Header />
         <Switch>
           <Route path="/invoices">
@@ -30,6 +30,9 @@ function App() {
           </Route>
           <Route path="/invoice/:id">
             <InvoiceDetails />
+          </Route>
+          <Route path="/test">
+            <AxiosTest />
           </Route>
           <Route path="/">
             <InvoicesList />

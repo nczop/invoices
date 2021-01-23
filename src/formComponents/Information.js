@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DatePicker from './DatePicker';
+import { Field } from "formik";
 
 const useStyles = makeStyles(() => ({
   informationContainer: {
@@ -34,16 +35,16 @@ function Information(props) {
       <div className={classes.column1}>
         <form noValidate autoComplete="off">
           <Box m={2}>
-            <TextField id="standard-disabled" label="No." className={classes.input} defaultValue={props.invoice.id} InputProps={{
+            <Field id="standard-disabled" label="No." className={classes.input} component={TextField} name="no" InputProps={{
             readOnly: props.isReadOnly,
           }}/>
           </Box>
         </form>
         <Box m={2} component="span">
-          <DatePicker/>
+          <DatePicker label="Created date"/>
         </Box>
         <Box m={2} component="span">
-          <DatePicker />
+          <DatePicker label="Valid until date"/>
         </Box>
       </div>
       <div className={classes.button}>
@@ -51,7 +52,7 @@ function Information(props) {
           <Button variant="contained">Cancel</Button>
         </Box>
         <Box m={2}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={props.submitForm}>
             Save
           </Button>
         </Box>

@@ -17,7 +17,7 @@ function InvoiceDetails() {
     axios.get(`http://localhost:3001/api/invoices/${id}`).then((res) => {
       setTimeout(() => {
         setInvoice(res.data);
-      }, 2000);
+      }, 1000);
     });
   };
   if (invoice) {

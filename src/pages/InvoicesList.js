@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import useInvoicesList from "./useInvoicesList"
+import useInvoicesList from "../hooks/useInvoicesList"
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
