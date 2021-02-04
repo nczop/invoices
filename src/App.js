@@ -4,14 +4,13 @@ import "./App.css";
 import Header from "./components/Header";
 import InvoicesList from "./pages/InvoicesList";
 import AddInvoice from "./pages/AddInvoice";
-import AxiosTest from "./pages/AxiosTest";
 import EditInvoice from "./pages/EditInvoice";
 import InvoiceDetails from "./pages/InvoiceDetails";
 
 function App() {
   return (
     <>
-      <Router>
+      <Router >
         <Link to="/invoices" />
         <Link to="/addinvoice" />
         <Link to="/" />
@@ -30,10 +29,7 @@ function App() {
           </Route>
           <Route path="/invoice/:id">
             <InvoiceDetails />
-          </Route>
-          <Route path="/test">
-            <AxiosTest />
-          </Route>
+          </Route>          
           <Route path="/">
             <InvoicesList />
           </Route>

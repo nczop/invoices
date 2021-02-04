@@ -1,7 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { TextField } from "formik-material-ui";
 import Box from "@material-ui/core/Box";
+import { Field } from "formik";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 const useStyles = makeStyles(() => ({
   itemContainer: {
@@ -16,29 +19,83 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Item() {
+function Item(props) {
   const classes = useStyles();
+
+  const deleteItem = () => {
+    props.removeItem(props.id);
+  };
+
   return (
     <>
       <div className={classes.itemContainer}>
         <div className={classes.nameInput}>
-        <Box m={2}>
-            <TextField label="Name" fullWidth />
-        </Box>
+          <Box m={2}>
+            <Field
+              label="Name"
+              fullWidth
+              component={TextField}
+              name={`items[${props.index}].name`}
+              InputProps={{
+                readOnly: props.disabled,
+              }}
+            />
+          </Box>
         </div>
         <div className={classes.details}>
           <Box m={2}>
-            <TextField label="Amount" fullWidth />
+            <Field
+              label="Amount"
+              fullWidth
+              component={TextField}
+              name={`items[${props.index}].amount`}
+              InputProps={{
+                readOnly: props.disabled,
+              }}
+            />
           </Box>
           <Box m={2}>
-            <TextField label="Unit" fullWidth />
+            <Field
+              label="Unit"
+              fullWidth
+              component={TextField}
+              name={`items[${props.index}].unit`}
+              InputProps={{
+                readOnly: props.disabled,
+              }}
+            />
           </Box>
           <Box m={2}>
-            <TextField label="Tax" fullWidth />
+            <Field
+              label="Tax"
+              fullWidth
+              component={TextField}
+              name={`items[${props.index}].tax`}
+              InputProps={{
+                readOnly: props.disabled,
+              }}
+            />
           </Box>
           <Box m={2}>
-            <TextField label="Price" fullWidth />
+            <Field
+              label="Price"
+              fullWidth
+              component={TextField}
+              name={`items[${props.index}].price`}
+              InputProps={{
+                readOnly: props.disabled,
+              }}
+            />
           </Box>
+            <Box>
+              <IconButton
+                aria-label="delete"
+                onClick={deleteItem}
+                disabled={!props.isRemovable || props.disabled}
+              >
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Box>          
         </div>
       </div>
     </>

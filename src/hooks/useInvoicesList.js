@@ -3,18 +3,18 @@ import axios from "axios";
 
 function useInvoicesList() {
   const [invoices, setInvoices] = useState([]);
-   useEffect(() => {
+
+  useEffect(() => {
     loadInvoices();
   }, []);
 
   const loadInvoices = () => {
-    axios.get(`http://localhost:3001/api/invoices`).then((res) => {
+    axios.get(`http://localhost:3001/api/invoices`)
+    .then((res) => {
       setInvoices(res.data);
-    });
+    })  
   };
 
-  return (
-    invoices
-  );
+  return [invoices, setInvoices];
 }
 export default useInvoicesList;

@@ -1,6 +1,5 @@
 import 'date-fns';
 import React from 'react';
-// import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -8,7 +7,7 @@ import {
 } from '@material-ui/pickers';
 
 function DatePicker(props) {
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);

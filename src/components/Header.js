@@ -48,12 +48,6 @@ function Header() {
               icon={<PostAddIcon fontSize="large" />}
               showLabel
             />
-            <BottomNavigationAction
-              label="test"
-              component={Link}
-              to="/test"
-              showLabel
-            />
           </div>
           <div />
         </div>

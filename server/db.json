@@ -1,16 +1,15 @@
 {
-  "invoices": 
-  [
+  "invoices": [
     {
       "id": "01",
-      "created": "10/12/2020",
-      "validUntil": "01/01/2000",
+      "created": "03/10/2020",
+      "validUntil": "04/11/2000",
       "recipientData": {
         "companyName": "Teatr Chrząszczowy",
         "city": "Szczebrzeszyn",
         "street": "Kosmiczna 43",
         "postcode": "82-109",
-        "nip": "3245932099",
+        "nip": 3245932099,
         "phone": "+48 563 091 765",
         "email": "teatrchrzaszczowy@gmail.com",
         "bankAccount": "11 1222 4453 0000 2322 9668 3324"
@@ -20,13 +19,14 @@
         "city": "Wrocław",
         "street": "Owsiana 25",
         "postcode": "12-321",
-        "nip": "1342859402",
+        "nip": 1342859402,
         "phone": "+48 444 223 789",
         "email": "czopikbag@gmail.com",
         "bankAccount": "14 9293 7738 0000 21233 8330 0989"
       },
       "items": [
         {
+          "id": 1,
           "name": "sprzedaż tkaniny",
           "amount": 2,
           "unit": "m",
@@ -34,6 +34,7 @@
           "price": 150
         },
         {
+          "id": 2,
           "name": "pobranie miary",
           "amount": 1,
           "unit": "sztuk",
@@ -41,6 +42,7 @@
           "price": 50
         },
         {
+          "id": 3,
           "name": "dodatki krawieckie",
           "amount": 5,
           "unit": "sztuk",
@@ -51,14 +53,14 @@
     },
     {
       "id": "02",
-      "created": "04/08/2020",
-      "validUntil": "01/01/2000",
+      "created": "01/01/2021",
+      "validUntil": "03/03/2021",
       "recipientData": {
         "companyName": "Skep zoologiczny Zwierzyniec",
         "city": "Zwierzyniec",
         "street": "Czekoladowa 78",
         "postcode": "82-109",
-        "nip": "5389205839",
+        "nip": 5389205839,
         "phone": "+48 456 433 124",
         "email": "sklepzoologicznyzwierzyniec@gmail.com",
         "bankAccount": "34 3235 3436 0000 4757 1484 4522"
@@ -68,13 +70,14 @@
         "city": "Wrocław",
         "street": "Owsiana 25",
         "postcode": "12-321",
-        "nip": "1342859402",
+        "nip": 1342859402,
         "phone": "+48 444 223 789",
         "email": "czopikbag@gmail.com",
         "bankAccount": "14 9293 7738 0000 21233 8330 0989"
       },
       "items": [
         {
+          "id": 1,
           "name": "sprzedaż tkaniny",
           "amount": 10,
           "unit": "m",
@@ -82,6 +85,7 @@
           "price": 500
         },
         {
+          "id": 2,
           "name": "teśma nośna",
           "amount": 100,
           "unit": "m",
@@ -89,6 +93,7 @@
           "price": 300
         },
         {
+          "id": 3,
           "name": "psi kubrak",
           "amount": 10,
           "unit": "sztuk",
@@ -96,6 +101,7 @@
           "price": 600
         },
         {
+          "id": 4,
           "name": "skarpetki dla psa",
           "amount": 40,
           "unit": "sztuk",
@@ -103,6 +109,7 @@
           "price": 200
         },
         {
+          "id": 5,
           "name": "szycie obroży",
           "amount": 20,
           "unit": "sztuk",
@@ -113,14 +120,14 @@
     },
     {
       "id": "03",
-      "created": "10/04/2020",
-      "validUntil": "01/01/2000",
+      "created": "04/10/2020",
+      "validUntil": "05/25/2000",
       "recipientData": {
         "companyName": "Sklep z kostiumami Matrix",
         "city": "Boży Dar",
         "street": "Orzeszkowa 236",
         "postcode": "55-234",
-        "nip": "0396748243",
+        "nip": 1342859402,
         "phone": "+48 549 255 235",
         "email": "sklepzkostiumamimatrix@gmail.com",
         "bankAccount": "10 2335 5321 0000 7668 5868 5532"
@@ -130,31 +137,32 @@
         "city": "Wrocław",
         "street": "Owsiana 25",
         "postcode": "12-321",
-        "nip": "1342859402",
+        "nip": 1342859402,
         "phone": "+48 444 223 789",
         "email": "czopikbag@gmail.com",
         "bankAccount": "14 9293 7738 0000 21233 8330 0989"
       },
       "items": [
         {
+          "id": 1,
           "name": "sprzedaż tkaniny- velur",
           "amount": 50,
           "unit": "m",
           "tax": 23,
           "price": 500
-        }        
+        }
       ]
     },
     {
       "id": "04",
-      "created": "18/01/2020",
-      "validUntil": "01/01/2000",
+      "created": "10/18/2019",
+      "validUntil": "11/28/2019",
       "recipientData": {
         "companyName": "Zrywka- woreczki materiałowe na artykuły spożywcze",
         "city": "Brody",
         "street": "Królicz 355",
         "postcode": "43-646",
-        "nip": "7392029482",
+        "nip": 7392029482,
         "phone": "+48 554 456 876",
         "email": "zrywka@gmail.com",
         "bankAccount": "11 3456 3346 0000 9743 4672 3324"
@@ -164,13 +172,14 @@
         "city": "Wrocław",
         "street": "Owsiana 25",
         "postcode": "12-321",
-        "nip": "1342859402",
+        "nip": 1342859402,
         "phone": "+48 444 223 789",
         "email": "czopikbag@gmail.com",
         "bankAccount": "14 9293 7738 0000 21233 8330 0989"
       },
       "items": [
         {
+          "id": 1,
           "name": "sprzedaż tkaniny",
           "amount": 15,
           "unit": "m",
@@ -178,6 +187,7 @@
           "price": 342
         },
         {
+          "id": 2,
           "name": "sznurek",
           "amount": 10,
           "unit": "m",
@@ -188,14 +198,14 @@
     },
     {
       "id": "05",
-      "created": "09/09/2020",
-      "validUntil": "01/01/2000",
+      "created": "09/09/2018",
+      "validUntil": "10/01/2018",
       "recipientData": {
         "companyName": "Tapicer",
         "city": "Zamość",
         "street": "Szklana 36",
         "postcode": "22-400",
-        "nip": "4529847389",
+        "nip": 4529847389,
         "phone": "+48 354 325 353",
         "email": "tapicer@gmail.com",
         "bankAccount": "11 2638 4236 0000 4789 6652 3350"
@@ -205,13 +215,14 @@
         "city": "Wrocław",
         "street": "Owsiana 25",
         "postcode": "12-321",
-        "nip": "1342859402",
+        "nip": 1342859402,
         "phone": "+48 444 223 789",
         "email": "czopikbag@gmail.com",
         "bankAccount": "14 9293 7738 0000 21233 8330 0989"
       },
       "items": [
         {
+          "id": 1,
           "name": "sprzedaż tkaniny",
           "amount": 10,
           "unit": "m",
@@ -219,6 +230,7 @@
           "price": 500
         },
         {
+          "id": 2,
           "name": "pianka tapicerska",
           "amount": 5,
           "unit": "sztuk",
@@ -226,6 +238,7 @@
           "price": 250
         },
         {
+          "id": 3,
           "name": "dodatki krawieckie",
           "amount": 5,
           "unit": "sztuk",

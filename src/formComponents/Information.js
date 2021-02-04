@@ -1,58 +1,88 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import DatePicker from './DatePicker';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import { TextField } from "formik-material-ui";
+import Button from "@material-ui/core/Button";
 import { Field } from "formik";
+import { DatePicker } from "formik-material-ui-pickers";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   informationContainer: {
-    display: 'flex',
+    display: "flex",
   },
   button: {
-    display: 'flex',
-    flex: '50%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    display: "flex",
+    flex: "50%",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   column1: {
-    flex: '50%',
-    justifyContent: 'flex-start',
+    flex: "50%",
+    justifyContent: "flex-start",
   },
   datePickers: {
-    display: 'flex',
+    display: "flex",
   },
   input: {
-    width: '87%',
+    width: "87%",
   },
 }));
 function Information(props) {
   const classes = useStyles();
+  let history = useHistory();
+
+  const handleCancelButton = () => {
+    history.push("/invoices");
+  };
 
   return (
     <div className={classes.informationContainer}>
       <div className={classes.column1}>
-        <form noValidate autoComplete="off">
-          <Box m={2}>
-            <Field id="standard-disabled" label="No." className={classes.input} component={TextField} name="no" InputProps={{
-            readOnly: props.isReadOnly,
-          }}/>
-          </Box>
-        </form>
-        <Box m={2} component="span">
-          <DatePicker label="Created date"/>
+        <Box m={2}>
+          <Field
+            id="standard-disabled"
+            label="No."
+            className={classes.input}
+            component={TextField}
+            name="id"
+            readOnly={props.disabled}
+          />
         </Box>
         <Box m={2} component="span">
-          <DatePicker label="Valid until date"/>
+          <Field
+            component={DatePicker}
+            label="Created date"
+            name="created"
+            readOnly={props.disabled}
+          />
+        </Box>
+        <Box m={2} component="span">
+          <Field
+            component={DatePicker}
+            label="Valid until date"
+            name="validUntil"
+            readOnly={props.disabled}
+          />
         </Box>
       </div>
       <div className={classes.button}>
         <Box m={0.5}>
-          <Button variant="contained">Cancel</Button>
+          <Button
+            variant="contained"
+            disabled={props.disabled}
+            onClick={handleCancelButton}
+          >
+            Cancel
+          </Button>
         </Box>
         <Box m={2}>
-          <Button variant="contained" color="primary" onClick={props.submitForm}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={props.submitForm}
+            disabled={props.disabled}
+          >
             Save
           </Button>
         </Box>

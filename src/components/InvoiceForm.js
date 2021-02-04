@@ -6,9 +6,10 @@ import RecipientSenderDetails from "../formComponents/RecipientSenderDetails";
 import Item from "../formComponents/Item";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { Formik, Field, Form } from "formik";
-import { useState, useEffect } from "react";
-import { emptyInvoice } from "../emptyInvoice";
+import { Formik, Field, Form, FieldArray } from "formik";
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import InvoiceSchema from '../InvoiceValidation'
 
 const useStyles = makeStyles(() => ({
   formContainer: {
@@ -22,95 +23,100 @@ const useStyles = makeStyles(() => ({
 }));
 
 function InvoiceForm(props) {
+  const { invoice, setInvoice, handleSubmit } = props;
   const classes = useStyles();
-  const [invoice, setInvoice] = useState(emptyInvoice);
-  console.log(invoice);
-  console.log("to jest przed sejwem " + JSON.stringify(invoice));
-
-  // const saveInvoiceInState = (values) => {
-  //   const savedInvoice = {
-  //     ...invoice,
-  //     no: values.no,
-  //     validUntil: values.validUntil,
-  //     created: values.created,
-  //     recipientData: {
-  //       companyName: values.recipentName,
-  //       city: values.recipentCity,
-  //       street: values.recipentStreet,
-  //       postcode: values.recipentPostcode,
-  //       nip: values.recipentNip,
-  //       phone: values.recipentPhone,
-  //       email: values.recipentEmail,
-  //       bankAccount: values.recipentBankAccount,
-  //     },
-  //     senderData: {
-  //       companyName: values.senderName,
-  //       city: values.senderCity,
-  //       street: values.senderStreet,
-  //       postcode: values.senderPostcode,
-  //       nip: values.senderNip,
-  //       phone: values.senderPhone,
-  //       email: values.senderEmail,
-  //       bankAccount: values.senderBankAccount,
-  //     },
-  //     items: values.items,
-  //   };
-
-  //   setInvoice(savedInvoice);
-  // };
-
+  
   return (
     <Formik
       initialValues={{
-        no: invoice.no,
+        id: invoice.id,
         created: invoice.created,
         validUntil: invoice.validUntil,
-        recipientCompanyName: "invoice.recipientData.companyName",
-        recipientCity: invoice.recipientData.city,
-        recipientStreet: invoice.recipientData.street,
-        recipientPosteCode: invoice.recipientData.posteCode,
-        recipientNip: invoice.recipientData.nip,
-        recipientTel: invoice.recipientData.tel,
-        recipientEmail: invoice.recipientData.email,
-        recipientBankAccount: invoice.recipientData.bankAccount,
-        senderDataCompanyName: invoice.senderData.companyName,
-        senderDataCity: invoice.senderData.city,
-        senderDataStreet: invoice.senderData.street,
-        senderDataPosteCode: invoice.senderData.posteCode,
-        senderDataNip: invoice.senderData.nip,
-        senderDataTel: invoice.senderData.tel,
-        senderDataEmail: invoice.senderData.email,
-        senderDataBankAccount: invoice.senderData.bankAccount,
+        recipientData: invoice.recipientData,
+        senderData: invoice.senderData,
         items: invoice.items,
       }}
+      validationSchema={InvoiceSchema}
       onSubmit={(values) => {
-        // saveInvoiceInState(values);
-        console.log("to jest po", values);
+        handleSubmit(values);
       }}
     >
-      {({ submitForm }) => (
+      {(values) => (
         <Container>
-          <Form>
-            <Information
-              isReadOnly
-              invoice={props.invoice}
-              submitForm={submitForm}
-            />
-            <div className={classes.formContainer}>
-              <Box m={2}>
-                <RecipientSenderDetails header="Recipient" />
-              </Box>
-              <Box m={2}>
-                <RecipientSenderDetails header="Sender" />
-              </Box>
-            </div>
-            <Item />
-            <Box m={2}>
-              <Button className={classes.saveButton} variant="contained">
-                Add Item
-              </Button>
-            </Box>
-          </Form>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Form>
+              <Information
+                isReadOnly
+                submitForm={values.submitForm}
+                disabled={values.disabled}
+              />
+              <div className={classes.formContainer}>
+                <Box m={2}>
+                  <RecipientSenderDetails
+                    header="Recipient"
+                    details="recipientData"
+                    disabled={props.disabled}
+                  />
+                </Box>
+                <Box m={2}>
+                  <RecipientSenderDetails
+                    header="Sender"
+                    details="senderData"
+                    disabled={props.disabled}
+                  />
+                </Box>
+              </div>
+              <FieldArray
+                name="items"
+                render={(arrayHelpers) => {
+                  const handleButtonAddItem = () => {
+                    const newItem = {
+                      id: "",
+                      name: "",
+                      amount: 1,
+                      unit: "",
+                      tax: 0,
+                      price: 0,
+                    };
+                    arrayHelpers.push({
+                      ...newItem,
+                      id: values.values.items.length + 1,
+                    });
+                  };
+                  const removeItem = (itemId) => {
+                    const newItemsList = values.values.items.filter(
+                      (item) => item.id !== itemId
+                    );
+                    values.values.items = newItemsList;
+                    setInvoice({ ...invoice });
+                  };
+                  return (
+                    <>
+                      {values.values.items.map((item, index) => (
+                        <Item
+                          index={index}
+                          id={item.id}
+                          removeItem={removeItem}
+                          disabled={props.disabled}
+                          isRemovable={values.values.items.length > 1}
+                        />
+                      ))}
+                      <Box m={2}>
+                        <Button
+                          className={classes.saveButton}
+                          variant="contained"
+                          onClick={handleButtonAddItem} 
+                          disabled={props.disabled}
+                        >
+                          Add Item
+                        </Button>
+                      </Box>
+                    </>
+                  );
+                }}
+              />
+            </Form>
+          </MuiPickersUtilsProvider>
         </Container>
       )}
     </Formik>

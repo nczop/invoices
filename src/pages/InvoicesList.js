@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import useInvoicesList from "../hooks/useInvoicesList"
+import useInvoicesList from "../hooks/useInvoicesList";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -14,23 +14,29 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import IconButton from "@material-ui/core/IconButton";
+import axios from "axios";
 
 const columns = [
   { id: "id", label: "No.", minWidth: 50 },
-  { id: "created", label: "Created", minWidth: 150 },
+  {
+    id: "created",
+    label: "Created",
+    minWidth: 150,
+    align: "center",
+    format: (dateString) => {
+      const date = new Date(dateString);
+      return date.toLocaleDateString()
+    },
+  },
   {
     id: "validUntil",
     label: "Valid until",
     minWidth: 150,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "amount",
-    label: "Amount",
-    minWidth: 150,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
+    align: "center",
+    format: (dateString) => {
+      const date = new Date(dateString);
+      return date.toLocaleDateString()
+    },
   },
 ];
 
@@ -44,11 +50,11 @@ const useStyles = makeStyles({
   },
 });
 
-function InvoicesList() {
+function InvoicesList(props) {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const rows = useInvoicesList();
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rows, setRows] = useInvoicesList();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -57,6 +63,13 @@ function InvoicesList() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const removeItem = (itemId) => {
+    axios.delete("http://localhost:3001/invoices/" + itemId).then(() => {
+      const newItemsList = rows.filter((item) => item.id !== itemId);
+      setRows(newItemsList);
+    });
   };
 
   return (
@@ -76,6 +89,9 @@ function InvoicesList() {
                   </TableCell>
                 ))}
                 <TableCell align="center" style={{ minWidth: "150" }}>
+                  Amount
+                </TableCell>
+                <TableCell align="center" style={{ minWidth: "150" }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -94,19 +110,27 @@ function InvoicesList() {
                           component={Link}
                           to={`/invoice/${row.id}`}
                         >
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {column.format ? column.format(value) : value}
                         </TableCell>
                       );
                     })}
                     <TableCell align="center" style={{ minWidth: "150" }}>
-                      <IconButton aria-label="delete">
+                      {row.items
+                        .map((item) => item.price * item.amount)
+                        .reduce((a, b) => a + b, 0)}
+                    </TableCell>
+                    <TableCell align="center" style={{ minWidth: "150" }}>
+                      <IconButton
+                        aria-label="delete"
+                        onClick={() => removeItem(row.id)}
+                      >
                         <DeleteOutlineIcon fontSize="small" />
                       </IconButton>
-                      <IconButton aria-label="delete"
-                      component={Link}
-                      to={`/editInvoice/${row.id}`}>
+                      <IconButton
+                        aria-label="delete"
+                        component={Link}
+                        to={`/editInvoice/${row.id}`}
+                      >
                         <EditIcon fontSize="small" />
                       </IconButton>
                     </TableCell>
