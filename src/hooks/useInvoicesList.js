@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import httpService from "../HttpService";
 
 function useInvoicesList() {
   const [invoices, setInvoices] = useState([]);
@@ -9,7 +9,7 @@ function useInvoicesList() {
   }, []);
 
   const loadInvoices = () => {
-    axios.get(`http://localhost:3001/api/invoices`)
+    httpService.get(`invoices`)
     .then((res) => {
       setInvoices(res.data);
     })  

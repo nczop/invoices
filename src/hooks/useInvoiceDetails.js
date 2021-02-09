@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import httpService from "../HttpService";
 import { useParams } from "react-router-dom";
 
 function useInvoiceDetails() {
@@ -11,7 +11,7 @@ function useInvoiceDetails() {
   }, []);
 
   const loadInvoice = () => {
-    axios.get(`http://localhost:3001/api/invoices/${id}`).then((res) => {
+    httpService.get(`invoices/${id}`).then((res) => {
       setTimeout(() => {
         setInvoice(res.data);
       }, 500);

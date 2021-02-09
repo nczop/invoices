@@ -23,8 +23,23 @@ const useStyles = makeStyles(() => ({
 }));
 
 function InvoiceForm(props) {
-  const { invoice, setInvoice, handleSubmit } = props;
+  const { invoice, setInvoice, handleSubmit, disabled } = props;
   const classes = useStyles();
+
+  const handleButtonAddItem = (arrayHelpers, values) => {
+    const newItem = {
+      id: "",
+      name: "",
+      amount: 1,
+      unit: "",
+      tax: 0,
+      price: 0,
+    };
+    arrayHelpers.push({
+      ...newItem,
+      id: values.items.length + 1,
+    });
+  };
   
   return (
     <Formik
@@ -36,77 +51,63 @@ function InvoiceForm(props) {
         senderData: invoice.senderData,
         items: invoice.items,
       }}
-      validationSchema={InvoiceSchema}
+      // validationSchema={InvoiceSchema}
       onSubmit={(values) => {
         handleSubmit(values);
       }}
     >
-      {(values) => (
+      {({values, submitForm}) => (
         <Container>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Form>
               <Information
                 isReadOnly
-                submitForm={values.submitForm}
-                disabled={values.disabled}
+                submitForm={submitForm}
+                disabled={disabled}
               />
               <div className={classes.formContainer}>
                 <Box m={2}>
                   <RecipientSenderDetails
                     header="Recipient"
                     details="recipientData"
-                    disabled={props.disabled}
+                    disabled={disabled}
                   />
                 </Box>
                 <Box m={2}>
                   <RecipientSenderDetails
                     header="Sender"
                     details="senderData"
-                    disabled={props.disabled}
+                    disabled={disabled}
                   />
                 </Box>
               </div>
               <FieldArray
                 name="items"
                 render={(arrayHelpers) => {
-                  const handleButtonAddItem = () => {
-                    const newItem = {
-                      id: "",
-                      name: "",
-                      amount: 1,
-                      unit: "",
-                      tax: 0,
-                      price: 0,
-                    };
-                    arrayHelpers.push({
-                      ...newItem,
-                      id: values.values.items.length + 1,
-                    });
-                  };
                   const removeItem = (itemId) => {
-                    const newItemsList = values.values.items.filter(
+                    const newItemsList = values.items.filter(
                       (item) => item.id !== itemId
                     );
-                    values.values.items = newItemsList;
+                    values.items = newItemsList;
                     setInvoice({ ...invoice });
                   };
                   return (
                     <>
-                      {values.values.items.map((item, index) => (
+                      {values.items.map((item, index) => (
                         <Item
                           index={index}
                           id={item.id}
                           removeItem={removeItem}
-                          disabled={props.disabled}
-                          isRemovable={values.values.items.length > 1}
+                          disabled={disabled}
+                          isRemovable={values.items.length > 1}
                         />
                       ))}
                       <Box m={2}>
                         <Button
                           className={classes.saveButton}
                           variant="contained"
-                          onClick={handleButtonAddItem} 
-                          disabled={props.disabled}
+                          onClick={() => handleButtonAddItem (arrayHelpers, values)} 
+                          disabled={disabled}
                         >
                           Add Item
                         </Button>

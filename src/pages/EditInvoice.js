@@ -3,7 +3,7 @@ import InvoiceForm from "../components/InvoiceForm";
 import useInvoiceDetails from "../hooks/useInvoiceDetails";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { Container } from "@material-ui/core";
-import axios from "axios";
+import httpService from "../HttpService";
 import { useState } from "react";
 
 function EditInvoice() {
@@ -11,7 +11,7 @@ function EditInvoice() {
   const [disabled, setDisabled] = useState(false);
 
   const handleSubmit = (values) => {
-    axios.put("http://localhost:3001/invoices/" + values.id, values);
+    httpService.put("invoices/" + values.id, values);
 
     setDisabled(true);
   };

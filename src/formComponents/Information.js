@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import { TextField } from "formik-material-ui";
+import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import { Field } from "formik";
 import { DatePicker } from "formik-material-ui-pickers";
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
 }));
 function Information(props) {
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
 
   const handleCancelButton = () => {
     history.push("/invoices");
@@ -44,7 +44,7 @@ function Information(props) {
             id="standard-disabled"
             label="No."
             className={classes.input}
-            component={TextField}
+            as={TextField}
             name="id"
             readOnly={props.disabled}
           />

@@ -14,7 +14,7 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import IconButton from "@material-ui/core/IconButton";
-import axios from "axios";
+import httpService from "../HttpService";
 
 const columns = [
   { id: "id", label: "No.", minWidth: 50 },
@@ -66,7 +66,7 @@ function InvoicesList(props) {
   };
 
   const removeItem = (itemId) => {
-    axios.delete("http://localhost:3001/invoices/" + itemId).then(() => {
+    httpService.delete("invoices/" + itemId).then(() => {
       const newItemsList = rows.filter((item) => item.id !== itemId);
       setRows(newItemsList);
     });

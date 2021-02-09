@@ -1,10 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField } from "formik-material-ui";
 import Box from "@material-ui/core/Box";
 import { Field } from "formik";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles(() => ({
   itemContainer: {
@@ -34,7 +35,7 @@ function Item(props) {
             <Field
               label="Name"
               fullWidth
-              component={TextField}
+              as={TextField}
               name={`items[${props.index}].name`}
               InputProps={{
                 readOnly: props.disabled,
@@ -47,7 +48,7 @@ function Item(props) {
             <Field
               label="Amount"
               fullWidth
-              component={TextField}
+              as={TextField}
               name={`items[${props.index}].amount`}
               InputProps={{
                 readOnly: props.disabled,
@@ -58,7 +59,7 @@ function Item(props) {
             <Field
               label="Unit"
               fullWidth
-              component={TextField}
+              as={TextField}
               name={`items[${props.index}].unit`}
               InputProps={{
                 readOnly: props.disabled,
@@ -69,7 +70,7 @@ function Item(props) {
             <Field
               label="Tax"
               fullWidth
-              component={TextField}
+              as={TextField}
               name={`items[${props.index}].tax`}
               InputProps={{
                 readOnly: props.disabled,
@@ -80,7 +81,7 @@ function Item(props) {
             <Field
               label="Price"
               fullWidth
-              component={TextField}
+              as={TextField}
               name={`items[${props.index}].price`}
               InputProps={{
                 readOnly: props.disabled,

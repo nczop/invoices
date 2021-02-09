@@ -2,7 +2,7 @@ import React from "react";
 import InvoiceForm from "../components/InvoiceForm";
 import { emptyInvoice } from "../emptyInvoice";
 import { useState } from "react";
-import axios from "axios";
+import httpService from "../HttpService";
 import { useHistory } from "react-router-dom";
 
 function AddInvoice() {
@@ -11,8 +11,8 @@ function AddInvoice() {
   const history = useHistory();
 
   const handleSubmit = (values) => {
-    axios
-      .post("http://localhost:3001/invoices", values)
+    httpService
+      .post("invoices", values)
     setDisabled(true);
     history.push("/invoice/" + values.id);
   };
