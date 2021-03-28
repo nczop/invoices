@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { Field } from "formik";
 import { DatePicker } from "formik-material-ui-pickers";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   informationContainer: {
@@ -89,5 +90,14 @@ function Information(props) {
       </div>
     </div>
   );
+}
+
+Information.propTypes = {
+  disabled: PropTypes.bool,
+  submitForm: PropTypes.func.isRequired,
+};
+
+Information.defaultProps = {
+  disabled: false
 }
 export default Information;

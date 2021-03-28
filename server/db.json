@@ -246,6 +246,41 @@
           "price": 135
         }
       ]
+    },
+    {
+      "id": "kQeYXC-",
+      "created": null,
+      "validUntil": null,
+      "recipientData": {
+        "companyName": "",
+        "city": "",
+        "street": "",
+        "postcode": "",
+        "nip": "",
+        "phone": "",
+        "email": "",
+        "bankAccount": ""
+      },
+      "senderData": {
+        "companyName": "",
+        "city": "",
+        "street": "",
+        "postcode": "",
+        "nip": "",
+        "phone": "",
+        "email": "",
+        "bankAccount": ""
+      },
+      "items": [
+        {
+          "id": 1,
+          "name": "",
+          "amount": 1,
+          "unit": "",
+          "tax": 0,
+          "price": 0
+        }
+      ]
     }
   ]
 }

@@ -5,6 +5,7 @@ import { Field } from "formik";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import TextField from '@material-ui/core/TextField';
+import PropTypes from "prop-types";
 
 
 const useStyles = makeStyles(() => ({
@@ -101,5 +102,15 @@ function Item(props) {
       </div>
     </>
   );
+}
+
+Item.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  removeItem:  PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  disabled: PropTypes.bool,
+};
+Item.defaultProps = {
+  disabled: false
 }
 export default Item;

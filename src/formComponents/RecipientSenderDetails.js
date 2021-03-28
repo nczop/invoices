@@ -85,7 +85,10 @@ function RecipientSenderDetails(props) {
     </>
   );
 }
+
 RecipientSenderDetails.propTypes = {
-  header: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired,
+  disabled: PropTypes.bool
 };
+
 export default RecipientSenderDetails;

@@ -6,10 +6,11 @@ import RecipientSenderDetails from "../formComponents/RecipientSenderDetails";
 import Item from "../formComponents/Item";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { Formik, Field, Form, FieldArray } from "formik";
+import { Formik, Form, FieldArray } from "formik";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import InvoiceSchema from '../InvoiceValidation'
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   formContainer: {
@@ -40,7 +41,7 @@ function InvoiceForm(props) {
       id: values.items.length + 1,
     });
   };
-  
+
   return (
     <Formik
       initialValues={{
@@ -51,7 +52,7 @@ function InvoiceForm(props) {
         senderData: invoice.senderData,
         items: invoice.items,
       }}
-      // validationSchema={InvoiceSchema}
+      validationSchema={InvoiceSchema}
       onSubmit={(values) => {
         handleSubmit(values);
       }}
@@ -123,4 +124,40 @@ function InvoiceForm(props) {
     </Formik>
   );
 }
+InvoiceForm.propTypes = {
+  invoice: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    created: PropTypes.instanceOf(Date),
+    validUntil: PropTypes.instanceOf(Date),
+    recipientData: PropTypes.shape({
+      companyName: PropTypes.string,
+      city: PropTypes.string,
+      street: PropTypes.string,
+      postcode: PropTypes.string,
+      nip: PropTypes.string,
+      phone: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      email: PropTypes.string,
+      bankAccount: PropTypes.string,
+    }),
+    senderData: PropTypes.shape({
+      companyName: PropTypes.string,
+      city: PropTypes.string,
+      street: PropTypes.string,
+      postcode: PropTypes.string,
+      nip: PropTypes.string,
+      phone: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      email: PropTypes.string,
+      bankAccount: PropTypes.string,
+    }),
+    items: PropTypes.array,
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  setInvoice: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+InvoiceForm.defaultProps = {
+  disabled: false
+}
+
 export default InvoiceForm;
