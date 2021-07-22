@@ -17,7 +17,6 @@ describe("useInvoiceDetails", () => {
         const { id } =  renderHook(() => useParams());
         const { waitForNextUpdate } = renderHook(() => useInvoiceDetails());
         await waitForNextUpdate({timeout:5000});
-        console.log(id)
         expect(id).toEqual("01");
     });
 });

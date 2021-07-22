@@ -46,8 +46,8 @@ function InvoiceForm(props) {
     <Formik
       initialValues={{
         id: invoice.id,
-        created: invoice.created,
-        validUntil: invoice.validUntil,
+        created: invoice.created || new Date (),
+        validUntil: invoice.validUntil || new Date (),
         recipientData: invoice.recipientData,
         senderData: invoice.senderData,
         items: invoice.items,

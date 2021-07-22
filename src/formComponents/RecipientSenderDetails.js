@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TextField from '@material-ui/core/TextField';
 import FormHeader from "./FormHeader";
 import { Field } from "formik";
+import ErrorMessageValidation from "./ErrorMessageValidation";
 
 function RecipientSenderDetails(props) {
   return (
@@ -18,6 +19,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.companyName`} />
         <Field
           label="City"
           fullWidth
@@ -27,6 +29,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.city`} />
         <Field
           label="Street"
           fullWidth
@@ -36,6 +39,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.street`} />
         <Field
           label="Post Code"
           fullWidth
@@ -45,6 +49,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.postcode`} />
         <Field
           label="NIP"
           fullWidth
@@ -54,6 +59,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.nip`} />
         <Field
           label="Tel"
           fullWidth
@@ -63,6 +69,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.phone`} />
         <Field
           label="E-mail"
           fullWidth
@@ -72,6 +79,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.email`} />
         <Field
           label="Bank account"
           fullWidth
@@ -81,6 +89,7 @@ function RecipientSenderDetails(props) {
             readOnly: props.disabled,
           }}
         />
+        <ErrorMessageValidation name={`${props.details}.bankAccount`} />
       </div>
     </>
   );

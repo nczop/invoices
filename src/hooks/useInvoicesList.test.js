@@ -6,7 +6,7 @@ jest.mock("../HttpService", () => {
     get: () => Promise.resolve({ data: [35, 7, 2] }),
   };
 });
-test("should increment counter", async () => {
+test("should contain data", async () => {
   const { result, waitForNextUpdate } = renderHook(() => useInvoicesList());
   await waitForNextUpdate();
   expect(result.current[0]).toEqual([35, 7, 2]);

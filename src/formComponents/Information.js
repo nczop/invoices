@@ -1,12 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Field } from "formik";
 import { DatePicker } from "formik-material-ui-pickers";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import ErrorMessageValidation from "./ErrorMessageValidation";
 
 const useStyles = makeStyles(() => ({
   informationContainer: {
@@ -49,6 +50,7 @@ function Information(props) {
             name="id"
             readOnly={props.disabled}
           />
+          <ErrorMessageValidation name="id" component="div"/>
         </Box>
         <Box m={2} component="span">
           <Field
@@ -57,6 +59,7 @@ function Information(props) {
             name="created"
             readOnly={props.disabled}
           />
+          <ErrorMessageValidation name="created" />
         </Box>
         <Box m={2} component="span">
           <Field
@@ -98,6 +101,6 @@ Information.propTypes = {
 };
 
 Information.defaultProps = {
-  disabled: false
-}
+  disabled: false,
+};
 export default Information;
