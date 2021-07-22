@@ -32,10 +32,13 @@ function Header() {
             src={kogucik}
             alt="kogucik"
             style={{ height: '90%', paddingRight: '70px', paddingLeft: '50px' }}
+            data-testid = "kogucik"
           />
           <div >
             <BottomNavigationAction
-              label="Invoices"
+              label={<span
+              data-testid = "invoices">Invoices
+              </span>}
               component={Link}
               to="/invoices"
               icon={<FormatListBulletedIcon fontSize="large"/>}

@@ -11,11 +11,6 @@ function App() {
   return (
     <>
       <Router >
-        <Link to="/invoices" />
-        <Link to="/addinvoice" />
-        <Link to="/" />
-        <Link to="/test" />
-        <Link to="/invoice/:id" />
         <Header />
         <Switch>
           <Route path="/invoices">

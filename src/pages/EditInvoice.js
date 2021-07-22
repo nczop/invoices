@@ -12,7 +12,6 @@ function EditInvoice() {
 
   const handleSubmit = (values) => {
     httpService.put("invoices/" + values.id, values);
-
     setDisabled(true);
   };
 
